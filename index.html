@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orientation 2024 - AU United Photography Club</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #003366;
+        --secondary-color: #ff6600;
+        --bg-color: #f0f0f0;
+        --text-color: #333;
+      }
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      header {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+      }
+      .heading {
+        flex: 1;
+        justify-content: middle;
+        align-items: center;
+      }
+      .logo img {
+        width: 150px;
+        text-align: right;
+      }
+      * New styles for the carousel */ .carousel {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+      }
+      .carousel {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+      }
+      .carousel-inner {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        height: 100%;
+      }
+      .carousel-item {
+        min-width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .carousel-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        z-index: 10;
+      }
+      .carousel-control.prev {
+        left: 10px;
+      }
+      .carousel-control.next {
+        right: 10px;
+      }
+      h1,
+      h2,
+      h3 {
+        margin-top: 0;
+      }
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px 0;
+      }
+      .gallery img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        transition: transform 0.3s ease;
+      }
+      .gallery img:hover {
+        transform: scale(1.05);
+      }
+      .section {
+        background-color: white;
+        border-radius: 5px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .galleryh2 {
+        text-align: center;
+      }
+      .cta-button {
+        display: inline-block;
+        background-color: var(-- secondary-color);
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+      }
+      .cta-button:hover {
+        background-color: #e55b00;
+      }
+      footer {
+        text-align: center;
+        padding: 20px 0;
+        background-color: var(--primary-color);
+        color: white;
+        margin-top: 20px;
+      }
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 250px;
+        overflow: hidden;
+      }
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* width: 100%; */
+        height: 100%;
+      }
+      #feedback-form {
+        display: grid;
+        gap: 10px;
+      }
+      #feedback-form input,
+      #feedback-form textarea {
+        /* width: 100%; */
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .social-icons {
+        font-size: 24px;
+        margin-top: 10px;
+      }
+      .social-icons a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+    </style>
+    <style>
+      .contest-section {
+        background-color: #f8f8f8;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .contest-title {
+        color: var(--primary-color);
+        text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+      .contest-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .contest-description {
+        font-size: 1.2em;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+      .prize-info {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 500px;
+      }
+      .prize-info h3 {
+        color: var(--secondary-color);
+        margin-bottom: 10px;
+      }
+      .prize-info ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      .prize-info li {
+        margin-bottom: 10px;
+        font-size: 1.1em;
+      }
+      .submission-info {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.1em;
+      }
+      .cta-container {
+        text-align: center;
+      }
+      .submit-button {
+        font-size: 1.2em;
+        padding: 15px 30px;
+        background-color: var(--secondary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        display: inline-block;
+      }
+      .submit-button:hover {
+        background-color: #e55b00;
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="heading">
+        <h1>Andhra University Orientation 2024</h1>
+        <p>Captured through the lens of AU United Photography Club</p>
+      </div>
+
+      <div class="logo">
+        <img
+          src="./img/logos/AU UNITED PHOTOGRAPHY CLUB  png White.png"
+          alt=""
+        />
+      </div>
+    </header>
+
+    <!-- New Carousel Section -->
+    <div class="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item">
+          <img
+            src="https://i.ibb.co/1zsr3tX/IMG-9954.jpg"
+            alt="Orientation Highlight 1"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://i.ibb.co/TgL2Mzh/IMG-9994.jpg"
+            alt="Orientation Highlight 2"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://i.ibb.co/Sfh4Mg8/IMG-9890.jpg"
+            alt="Orientation Highlight 3"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://i.ibb.co/dKsMjNL/IMG-9972.jpg"
+            alt="Orientation Highlight 4"
+          />
+        </div>
+      </div>
+      <a href="#" class="carousel-control prev">&lt;</a>
+      <a href="#" class="carousel-control next">&gt;</a>
+    </div>
+
+    <div class="container">
+      <section class="section">
+        <h2 class="galleryh2">Orientation Photo Gallery</h2>
+        <div class="gallery">
+          <a
+            href="https://i.ibb.co/1zsr3tX/IMG-9954.jpg"
+            data-lightbox="orientation"
+            data-title="Welcome Speech"
+            ><img
+              src="https://i.ibb.co/1zsr3tX/IMG-9954.jpg"
+              alt="Welcome Speech"
+          /></a>
+          <a
+            href="https://i.ibb.co/TgL2Mzh/IMG-9994.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/TgL2Mzh/IMG-9994.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/Sfh4Mg8/IMG-9890.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/Sfh4Mg8/IMG-9890.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/dKsMjNL/IMG-9972.jpg"
+            data-lightbox="orientation"
+            data-title="Club Fair Excitement"
+            ><img src="https://i.ibb.co/dKsMjNL/IMG-9972.jpg" alt="Club Fair"
+          /></a>
+
+          <a
+            href="https://i.ibb.co/YXhfqVZ/IMG-0016.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/YXhfqVZ/IMG-0016.jpg"
+              alt="Photography Club"
+          /></a>
+
+          <a
+            href="https://i.ibb.co/YRPHvWb/IMG-9900.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/YRPHvWb/IMG-9900.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/rkdYv25/IMG-0007.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/rkdYv25/IMG-0007.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/xFRnm2L/IMG-9823.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/xFRnm2L/IMG-9823.jpg"
+              alt="Photography Club"
+          /></a>
+
+          <a
+            href="https://i.ibb.co/jrR9cQy/IMG-9836.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/jrR9cQy/IMG-9836.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/2hzT02N/IMG-9861.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/2hzT02N/IMG-9861.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/1GfsFJL/IMG-9921.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/1GfsFJL/IMG-9921.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/qj030N2/IMG-9925.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/qj030N2/IMG-9925.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/SdkfqWW/IMG-9932.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/SdkfqWW/IMG-9932.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/4mxq035/IMG-9998.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/4mxq035/IMG-9998.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/2sHsVGT/IMG-0043.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/2sHsVGT/IMG-0043.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/sv0dM64/IMG-0659.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/sv0dM64/IMG-0659.jpg"
+              alt="Photography Club"
+          /></a>
+
+          <a
+            href="https://i.ibb.co/BKrVH37/IMG-0698.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/BKrVH37/IMG-0698.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/Vv2SW81/IMG-0662.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/Vv2SW81/IMG-0662.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/hKSYTH1/IMG-0691.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/hKSYTH1/IMG-0691.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/s5YGhKZ/IMG-0572.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/s5YGhKZ/IMG-0572.jpg"
+              alt="Photography Club"
+          /></a>
+
+          <a
+            href="https://i.ibb.co/7JV6mH7/IMG-0746.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/7JV6mH7/IMG-0746.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/SrJGGfz/IMG-0774.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/SrJGGfz/IMG-0774.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/FzVKgZd/IMG-0694.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/FzVKgZd/IMG-0694.jpg"
+              alt="Photography Club"
+          /></a>
+          <a
+            href="https://i.ibb.co/pWcCTcK/IMG-0564.jpg"
+            data-lightbox="orientation"
+            data-title="AU United Photography Club"
+            ><img
+              src="https://i.ibb.co/pWcCTcK/IMG-0564.jpg"
+              alt="Photography Club"
+          /></a>
+
+          <!-- Add more photos as needed -->
+        </div>
+        <div class="cta-container">
+          <a
+            href="https://drive.google.com/drive/folders/1T4suxXVf1Nd2ucYqXrIIUDLgozn3RGMG?usp=sharing"
+            target="_blank"
+            class="cta-button submit-button"
+            >For more</a
+          >
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Orientation Recap Video</h2>
+        <div class="video-container">
+          <iframe
+            src="https://www.instagram.com/p/C-CaQAnP3cP/embed"
+            width="400"
+            height="750"
+            frameborder="0"
+            scrolling="no"
+            allowtransparency="true"
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Join AU United Photography Club</h2>
+        <p>
+          Capture moments, create memories, and develop your photography skills
+          with us!
+        </p>
+        <h3>What we offer:</h3>
+        <ul>
+          <li>
+            Skill Development: Learn photography techniques and skills from
+            experienced members and mentors.
+          </li>
+          <li>
+            Creative Outlet: Express and enhance your creativity through various
+            photography challenges and activities.
+          </li>
+          <li>
+            Community: Become part of a vibrant community of like-minded
+            photography enthusiasts.
+          </li>
+          <li>
+            Opportunities: Gain access to exciting events and opportunities for
+            hands-on experience.
+          </li>
+          <li>
+            Fun and Engagement: Enjoy fun-filled activities and create lasting
+            memories.
+          </li>
+        </ul>
+        <p>
+          Joining our club offers a perfect blend of learning, creativity, and
+          community.
+        </p>
+        <a href="#" class="cta-button">Learn More & Join</a>
+      </section>
+
+      <section class="section">
+        <h2>Photography Tip of You</h2>
+        <h3>Mastering the Rule of Thirds</h3>
+        <p>
+          Improve your composition by imagining your image divided into a 3x3
+          grid. Place key elements along these lines or at their intersections
+          to create more balanced and interesting photos.
+        </p>
+        <img
+          src="https://i.ibb.co/JR0xMqL/IMG-0993.jpg"
+          alt="Rule of Thirds Example"
+          style="
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin: 20px auto;
+          "
+        />
+      </section>
+
+      <section class="section contest-section">
+        <h2 class="contest-title">📸 "Best Orientation Moment" Contest 🏆</h2>
+        <div class="contest-content">
+          <p class="contest-description">
+            Capture the essence of your orientation experience! Share your
+            favorite moment and get a chance to be directly recruited into the
+            AU United Photography Club.
+          </p>
+          <!-- <div class="prize-info">
+            <h3>Prizes:</h3>
+            <ul>
+              <li>
+                🥇 1st Prize: Direct club recruitment + Professional camera bag
+              </li>
+              <li>🥈 2nd Prize: Six-month free club membership + Tripod</li>
+              <li>
+                🥉 3rd Prize: Three-month free club membership + Photography
+                book
+              </li>
+            </ul>
+          </div> -->
+          <div class="submission-info">
+            <p>📅 Submission Deadline: Auguest 15, 2024</p>
+            <p>📣 Winners will get direct call from the Club</p>
+          </div>
+          <div class="cta-container">
+            <a
+              href="https://forms.gle/sG1vKRu7jFrzvisC7"
+              target="_blank"
+              class="cta-button submit-button"
+              >Submit Your Photo</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- <section class="section">
+        <h2>Your Feedback Matters</h2>
+        <p>Help us improve future orientations and our club activities!</p>
+        <form id="feedback-form">
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <textarea placeholder="Your Feedback" rows="4" required></textarea>
+          <label
+            ><input type="checkbox" /> I'm interested in joining the Photography
+            Club</label
+          >
+          <button type="submit" class="cta-button">Submit Feedback</button>
+        </form>
+      </section> -->
+    </div>
+
+    <footer>
+      <p>&copy; 2024 AU United Photography Club</p>
+      <div class="social-icons">
+        <a href="#" title="Facebook">📘</a>
+        <a href="#" title="Instagram">📷</a>
+        <a href="#" title="Twitter">🐦</a>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const carousel = document.querySelector(".carousel-inner");
+        const items = carousel.querySelectorAll(".carousel-item");
+        let currentIndex = 0;
+
+        function showSlide(index) {
+          if (index < 0) index = items.length - 1;
+          if (index >= items.length) index = 0;
+          carousel.style.transform = `translateX(-${index * 100}%)`;
+          currentIndex = index;
+        }
+
+        document
+          .querySelector(".carousel-control.prev")
+          .addEventListener("click", (e) => {
+            e.preventDefault();
+            showSlide(currentIndex - 1);
+          });
+
+        document
+          .querySelector(".carousel-control.next")
+          .addEventListener("click", (e) => {
+            e.preventDefault();
+            showSlide(currentIndex + 1);
+          });
+
+        // Auto-advance the carousel every 5 seconds
+        setInterval(() => showSlide(currentIndex + 1), 5000);
+      });
+    </script>
+
+    <!-- <script>
+      document
+        .getElementById("feedback-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Thank you for your feedback! We'll get back to you soon.");
+          this.reset();
+        });
+    </script>
+
+    <script>
+      // Existing feedback form script
+      document
+        .getElementById("feedback-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Thank you for your feedback! We'll get back to you soon.");
+          this.reset();
+        });
+    </script> -->
+
+    <!-- <script>
+      document
+        .getElementById("feedback-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const formData = new FormData(this);
+          const feedbackData = {
+            name: formData.get("name"),
+            email: formData.get("email"),
+            feedback: formData.get("feedback"),
+            joinClub: formData.get("joinClub") === "on",
+          };
+
+          fetch("http://localhost:3000/submit-feedback", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(feedbackData),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              alert("Thank you for your feedback! We'll get back to you soon.");
+              this.reset();
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert(
+                "There was an error submitting your feedback. Please try again later."
+              );
+            });
+        });
+    </script> -->
+  </body>
+</html>
