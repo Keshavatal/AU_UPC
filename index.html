@@ -154,24 +154,6 @@
         border: 1px solid #ddd;
         border-radius: 5px;
       }
-
-      /* footer {
-        text-align: center;
-        padding: 20px 0;
-        background-color: var(--primary-color);
-        color: white;
-        margin-top: 20px;
-      }
-      .social-icons {
-        font-size: 24px;
-        margin-top: 10px;
-      }
-      .social-icons a {
-        color: white;
-        margin: 0 10px;
-        text-decoration: none;
-      } */
-
       footer {
         background-color: var(--primary-color);
         color: white;
@@ -793,19 +775,6 @@
             favorite moment and get a chance to be directly recruited into the
             AU United Photography Club.
           </p>
-          <!-- <div class="prize-info">
-            <h3>Prizes:</h3>
-            <ul>
-              <li>
-                🥇 1st Prize: Direct club recruitment + Professional camera bag
-              </li>
-              <li>🥈 2nd Prize: Six-month free club membership + Tripod</li>
-              <li>
-                🥉 3rd Prize: Three-month free club membership + Photography
-                book
-              </li>
-            </ul>
-          </div> -->
           <div class="submission-info">
             <p>📅 Submission Deadline: Auguest 15, 2024</p>
             <p>📣 Winners will get direct call from the Club</p>
@@ -820,21 +789,6 @@
           </div>
         </div>
       </section>
-
-      <!-- <section class="section">
-        <h2>Your Feedback Matters</h2>
-        <p>Help us improve future orientations and our club activities!</p>
-        <form id="feedback-form">
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-          <textarea placeholder="Your Feedback" rows="4" required></textarea>
-          <label
-            ><input type="checkbox" /> I'm interested in joining the Photography
-            Club</label
-          >
-          <button type="submit" class="cta-button">Submit Feedback</button>
-        </form>
-      </section> -->
     </div>
 
     <footer>
@@ -849,16 +803,6 @@
           All rights reserved.
         </p>
 
-        <!-- <div class="social-icons">
-          <a
-            href="https://www.instagram.com/au_united_photography_club"
-            target="_blank"
-            title="Instagram"
-            ><img
-              src="https://i.ibb.co/pKwBFkw/Instagramgif.gif"
-              alt="Instagramgif"
-          /></a>
-        </div> -->
         <p class="creator">
           Designed and maintained by
           <a
@@ -902,61 +846,5 @@
         setInterval(() => showSlide(currentIndex + 1), 5000);
       });
     </script>
-
-    <!-- <script>
-      document
-        .getElementById("feedback-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          alert("Thank you for your feedback! We'll get back to you soon.");
-          this.reset();
-        });
-    </script>
-
-    <script>
-      // Existing feedback form script
-      document
-        .getElementById("feedback-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          alert("Thank you for your feedback! We'll get back to you soon.");
-          this.reset();
-        });
-    </script> -->
-
-    <!-- <script>
-      document
-        .getElementById("feedback-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          const formData = new FormData(this);
-          const feedbackData = {
-            name: formData.get("name"),
-            email: formData.get("email"),
-            feedback: formData.get("feedback"),
-            joinClub: formData.get("joinClub") === "on",
-          };
-
-          fetch("http://localhost:3000/submit-feedback", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(feedbackData),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              alert("Thank you for your feedback! We'll get back to you soon.");
-              this.reset();
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-              alert(
-                "There was an error submitting your feedback. Please try again later."
-              );
-            });
-        });
-    </script> -->
   </body>
 </html>
